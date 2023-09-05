@@ -4,6 +4,7 @@ const {
   getRecipe,
   updateRecipe,
   deleteRecipe,
+  addRecipe,
 } = require("../controller/recipeController");
 
 const router = express.Router();
@@ -13,6 +14,9 @@ router.get("/", getRecipes);
 
 // GET one recipe
 router.get("/:id", getRecipe);
+
+// ADD one recipe
+router.post("/", addRecipe);
 
 // PATCH recipe (update)
 router.patch("/:id", updateRecipe);

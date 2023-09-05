@@ -1,0 +1,58 @@
+/* Copy the styles from login.css and paste them here */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #333; /* Dark background color */
+}
+
+.signup-form {
+  background-color: #fff; /* White background for the form */
+  padding: 50px; /* Increased padding */
+  border-radius: 10px; /* Rounded corners for the form */
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Added box shadow for a subtle effect */
+}
+
+.signup-form h2 {
+  color: #007bff; /* Blue heading color */
+}
+
+.signup-form input {
+  width: 100%;
+  padding: 12px; /* Increased padding for better input spacing */
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px; /* Adjusted font size */
+  color: #333; /* Changed font color to dark gray */
+}
+
+.signup-form button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 12px 24px; /* Increased padding for the button */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.signup-form button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.signup-form p {
+  color: #777; /* Additional text color */
+}
+
+.signup-form a {
+  color: #007bff; /* Link color */
+  text-decoration: none;
+}
+
+.signup-form a:hover {
+  text-decoration: underline; /* Link underline on hover */
+}

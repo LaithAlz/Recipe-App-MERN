@@ -1,9 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
+import { useLogout } from "../helpers/useLogout";
 
 const Navbar = () => {
-  const isLoggedIn = false; 
+  const { logout } = useLogout();
+  const isLoggedIn = true;
+
+  const handleLogout = () => {
+    logout();
+  };
 
   return (
     <div className="navbar">
@@ -32,10 +38,12 @@ const Navbar = () => {
       </div>
       <div className="auth-links">
         {isLoggedIn ? (
-          <Link className="nav-link" to="/logout">
+          // <Link className="nav-link" to="/logout">
+          <button className="nav-link" onClick={handleLogout}>
             Logout
-          </Link>
+          </button>
         ) : (
+          // </Link>
           <>
             <Link className="nav-link" to="/login">
               Login

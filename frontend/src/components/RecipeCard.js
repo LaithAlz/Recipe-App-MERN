@@ -1,4 +1,5 @@
 import "../styles/RecipeCard.css";
+import { Link } from "react-router-dom";
 
 const RecipeCard = ({ recipe }) => {
   return (
@@ -6,9 +7,9 @@ const RecipeCard = ({ recipe }) => {
       <img src={recipe.image} alt={recipe.title} className="recipe-image" />
       <h3 className="recipe-title">{recipe.title}</h3>
       <p className="recipe-description">{recipe.description}</p>
-      <a href={`/recipe/${recipe.id}`} className="recipe-link">
+      <Link className="recipe-link" to={`${recipe._id}`}>
         View Recipe
-      </a>
+      </Link>
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import '../styles/Footer.css'
 
 const Footer = () => {
-    return ( <footer class="footer">
-    <div class="footer-links">
+    return ( <footer className="footer">
+    <div className="footer-links">
       <a href="/about">About Us</a>
       <a href="/contact">Contact</a>
       <a href="/privacy-policy">Privacy Policy</a>

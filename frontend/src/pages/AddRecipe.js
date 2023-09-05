@@ -1,18 +1,23 @@
 import React, { useState } from "react";
 import "../styles/AddRecipe.css";
+import addRecipe from "../helpers/addRecipe";
+import { useRecipeContext } from "../helpers/useRecipeContext";
 
 const AddRecipe = () => {
+  const { dispatch } = useRecipeContext();
+
   const [recipeData, setRecipeData] = useState({
     title: "",
     description: "",
     ingredients: [""],
     instructions: [""],
-    image: "",
+    // image: "",
   });
 
-  const handleInputChange = (e, fieldName) => {
+  const handleInputChange = (e) => {
     const { value } = e.target;
-    setRecipeData({ ...recipeData, [fieldName]: value });
+    const { name } = e.target;
+    setRecipeData({ ...recipeData, [name]: value });
   };
 
   const handleIngredientChange = (e, index) => {
@@ -55,10 +60,20 @@ const AddRecipe = () => {
     setRecipeData({ ...recipeData, instructions: updatedInstructions });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const addToDB = async () => {
+      const res = await addRecipe(recipeData);
+      dispatch({ type: "ADD_RECIPE", payload: res.data });
+    };
+    addToDB();
+  };
+
   return (
     <div className="add-recipe-container">
       <h1>Add Recipe</h1>
-      <form id="recipe-form">
+      <form id="recipe-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="title">Title:</label>
           <input
@@ -143,7 +158,7 @@ const AddRecipe = () => {
           </button>
         </div>
 
-        <div className="form-group">
+        {/* <div className="form-group">
           <label htmlFor="image">Image URL:</label>
           <input
             type="text"
@@ -153,7 +168,7 @@ const AddRecipe = () => {
             onChange={handleInputChange}
             required
           />
-        </div>
+        </div> */}
 
         <button type="submit">Submit</button>
       </form>

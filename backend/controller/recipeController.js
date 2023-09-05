@@ -2,12 +2,41 @@ const Recipe = require("../models/recipeModel");
 
 // GET all recipes
 const getRecipes = async (req, res) => {
-  res.json({ msg: "GET all recipes" });
+  try {
+    const recipes = await Recipe.find({}).sort({ createdAt: -1 });
+    res.status(200).json(recipes);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 
 // GET one recipe
 const getRecipe = async (req, res) => {
-  res.json({ msg: "GET one recipes" });
+  const { id } = req.params;
+
+  try {
+    const recipe = await Recipe.findById(id);
+    res.status(200).json({ recipe });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+// POST recipe
+const addRecipe = async (req, res) => {
+  const { title, description, ingredients, instructions } = req.body;
+
+  try {
+    const recipe = await Recipe.create({
+      title,
+      description,
+      ingredients,
+      instructions,
+    });
+    res.status(200).json(recipe);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 };
 
 // PATCH recipe
@@ -25,4 +54,5 @@ module.exports = {
   getRecipe,
   updateRecipe,
   deleteRecipe,
+  addRecipe,
 };

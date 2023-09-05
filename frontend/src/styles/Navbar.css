@@ -38,6 +38,7 @@
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  margin-right: 10px;
 }
 
 /* Search Button Styles */
@@ -48,4 +49,45 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+
+/* Responsive Styles */
+@media (max-width: 900px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo {
+    width: 150px;
+    margin-bottom: 10px;
+  }
+
+  .links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .auth-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-input {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  /* Additional styles for mobile devices */
+  .navbar {
+    background-color: #444; /* Darker background for mobile */
+    padding: 20px; /* Increased padding for better spacing */
+    border-bottom: 2px solid #007bff; /* Highlight bottom border */
+  }
+
+  .nav-link {
+    font-size: 18px; /* Larger font size for mobile */
+  }
 }

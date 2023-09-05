@@ -1,36 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import RecipeCard from "../components/RecipeCard";
 import "../styles/Recipes.css";
+import getRecipes from "../helpers/getRecipes";
 
 const Recipes = () => {
-  const data = [
-    {
-      id: 1,
-      image: "recipe-image-1.jpg",
-      title: "Recipe 1",
-      description: "Description of Recipe 1.",
-    },
-    {
-      id: 2,
-      image: "recipe-image-2.jpg",
-      title: "Recipe 2",
-      description: "Description of Recipe 2.",
-    },
-    {
-      id: 3,
-      image: "recipe-image-3.jpg",
-      title: "Recipe 3",
-      description: "Description of Recipe 3.",
-    },
-  ];
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const getData = async () => {
+      const res = await getRecipes();
+      setData(res.data);
+    };
+    getData();
+  }, []);
 
   return (
     <div className="recipes-container">
       <h1>Recipes</h1>
       <div className="recipe-list">
-        {data.map((recipe) => (
-          <RecipeCard key={recipe.id} recipe={recipe} />
-        ))}
+        {data.length > 0 ? (
+          data.map((recipe) => (
+            <RecipeCard key={String(recipe.id)} recipe={recipe} />
+          ))
+        ) : (
+          <p>Loading...</p>
+        )}
       </div>
     </div>
   );
