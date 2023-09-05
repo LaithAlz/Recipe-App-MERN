@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import "../styles/AddRecipe.css";
 import addRecipe from "../helpers/addRecipe";
 import { useRecipeContext } from "../helpers/useRecipeContext";
+import { useAuthContext } from "../helpers/useAuthContext";
 
 const AddRecipe = () => {
   const { dispatch } = useRecipeContext();
+  const { user } = useAuthContext();
+  const [error, setError] = useState("");
 
   const [recipeData, setRecipeData] = useState({
     title: "",
@@ -13,6 +16,22 @@ const AddRecipe = () => {
     instructions: [""],
     // image: "",
   });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!user) {
+      setError("You must be logged in");
+      return;
+    }
+
+    const addToDB = async () => {
+      const res = await addRecipe(recipeData, user);
+      dispatch({ type: "ADD_RECIPE", payload: res.data });
+      console.log("RES", res.data);
+    };
+    addToDB();
+  };
 
   const handleInputChange = (e) => {
     const { value } = e.target;
@@ -58,16 +77,6 @@ const AddRecipe = () => {
     const updatedInstructions = [...recipeData.instructions];
     updatedInstructions.splice(index, 1);
     setRecipeData({ ...recipeData, instructions: updatedInstructions });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const addToDB = async () => {
-      const res = await addRecipe(recipeData);
-      dispatch({ type: "ADD_RECIPE", payload: res.data });
-    };
-    addToDB();
   };
 
   return (
@@ -171,6 +180,7 @@ const AddRecipe = () => {
         </div> */}
 
         <button type="submit">Submit</button>
+        {error && <div className="error">{error}</div>}
       </form>
     </div>
   );

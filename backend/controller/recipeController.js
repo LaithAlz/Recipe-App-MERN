@@ -25,6 +25,7 @@ const getRecipe = async (req, res) => {
 // POST recipe
 const addRecipe = async (req, res) => {
   const { title, description, ingredients, instructions } = req.body;
+  const user_id = req.user._id;
 
   try {
     const recipe = await Recipe.create({
@@ -32,6 +33,7 @@ const addRecipe = async (req, res) => {
       description,
       ingredients,
       instructions,
+      user_id,
     });
     res.status(200).json(recipe);
   } catch (error) {

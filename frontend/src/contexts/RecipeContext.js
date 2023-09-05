@@ -23,7 +23,7 @@ export const recipesReducer = (state, action) => {
 
 export const RecipesContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(recipesReducer, {
-    recipes: null,
+    recipes: [],
   });
 
   return (

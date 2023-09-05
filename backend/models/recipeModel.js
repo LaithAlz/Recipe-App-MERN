@@ -19,6 +19,10 @@ const recipeSchema = new Schema(
       type: [String],
       required: true,
     },
+    user_id: {
+      type: String,
+      required: true,
+    },
     // image_url: {
     //   type: String,
     //   required: false,

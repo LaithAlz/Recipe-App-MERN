@@ -2,10 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
 import { useLogout } from "../helpers/useLogout";
+import { useAuthContext } from "../helpers/useAuthContext";
 
 const Navbar = () => {
   const { logout } = useLogout();
   const isLoggedIn = true;
+  const { user } = useAuthContext();
 
   const handleLogout = () => {
     logout();
@@ -37,13 +39,12 @@ const Navbar = () => {
         <button className="search-button">Search</button>
       </div>
       <div className="auth-links">
-        {isLoggedIn ? (
-          // <Link className="nav-link" to="/logout">
-          <button className="nav-link" onClick={handleLogout}>
+        {user && (
+          <button className="logout-button" onClick={handleLogout}>
             Logout
           </button>
-        ) : (
-          // </Link>
+        )}
+        {!user && (
           <>
             <Link className="nav-link" to="/login">
               Login

@@ -1,13 +1,20 @@
 import axios from "axios";
 
-const addRecipe = async (recipeData) => {
+const addRecipe = async (recipeData, user) => {
   try {
     console.log("Sending Recipe Data:", recipeData);
 
     const data = await axios.post(
       "http://localhost:4000/api/recipes",
-      JSON.stringify(recipeData),
-      { headers: { "Content-Type": "application/json" } }
+      // JSON.stringify(recipeData),
+      recipeData,
+      // {headers: {}}
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + user.token,
+        },
+      }
     );
 
     console.log("Add Recipe", data);
