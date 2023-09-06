@@ -6,7 +6,6 @@ const addRecipe = async (recipeData, user) => {
 
     const data = await axios.post(
       "http://localhost:4000/api/recipes",
-      // JSON.stringify(recipeData),
       recipeData,
       // {headers: {}}
       {
@@ -21,6 +20,7 @@ const addRecipe = async (recipeData, user) => {
     return data;
   } catch (error) {
     console.log(error);
+    throw error;
   }
 };
 

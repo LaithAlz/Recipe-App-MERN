@@ -14,9 +14,11 @@ const useSignup = () => {
     const res = await postSignup(email, name, password);
     console.log("RES", res);
 
-    if (res.response.status === 400) {
-      setIsLoading(false);
-      setError(res.response.data.error);
+    if (res.response) {
+      if (res.response.status === 400) {
+        setIsLoading(false);
+        setError(res.response.data.error);
+      }
     }
     // console.log(error);
 

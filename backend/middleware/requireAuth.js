@@ -21,8 +21,8 @@ const requireAuth = async (req, res, next) => {
       return res.status(401).json({ error: "User not found" });
     }
 
-    // Set req.user to the authenticated user
     req.user = user;
+    next();
   } catch (error) {
     console.log(error);
     res.status(401).json({ error: "Request is not authorized" });
