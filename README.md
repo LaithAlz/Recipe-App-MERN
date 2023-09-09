@@ -8,8 +8,7 @@ A web-based recipe-sharing platform built using the MERN stack, allowing users t
 - [Key Features](#key-features)
 - [Technologies](#technologies)
 - [Getting Started](#getting-started)
-- [API Endpoints](#API-Endpoints)
-
+- [API Endpoints](#api-endpoints)
 ## Overview
 
 The Recipe Sharing Platform is a web application designed to foster culinary creativity and make it easy for users to find and share their favorite recipes.
