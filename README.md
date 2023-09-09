@@ -8,7 +8,7 @@ A web-based recipe-sharing platform built using the MERN stack, allowing users t
 - [Key Features](#key-features)
 - [Technologies](#technologies)
 - [Getting Started](#getting-started)
-- [API Endpoints] (#API-Endpoints)
+- [API Endpoints](#API-Endpoints)
 
 ## Overview
 
