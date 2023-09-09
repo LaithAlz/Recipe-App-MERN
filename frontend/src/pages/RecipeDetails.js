@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "../styles/RecipeDetails.css"; // Import your CSS file
-import getOneRecipe from "../helpers/getOneRecipe";
+import getOneRecipe from "../api/getOneRecipe";
 import { useAuthContext } from "../helpers/useAuthContext";
 import { useRecipeContext } from "../helpers/useRecipeContext";
 

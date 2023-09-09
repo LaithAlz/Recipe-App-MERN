@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
-import postLogin from "./postLogin";
+import postLogin from "../api/postLogin";
 
 export const useLogin = () => {
   const [error, setError] = useState(null);

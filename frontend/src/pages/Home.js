@@ -1,36 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Home.css";
 import RecipeCard from "../components/RecipeCard";
+import getSpoonRecipes from "../api/getSpoonRecipes";
+import SpoonRecipeCard from "../components/SpoonRecipeCard";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-  const data = [
-    {
-      id: 1,
-      image: "HELLO",
-      title: "TITLE",
-      description: "DESC",
-    },
-    {
-      id: 2,
-      image: "HELLO",
-      title: "TITLE",
-      description: "DESC",
-    },
-  ];
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const getRandoms = async () => {
+      const res = await getSpoonRecipes(2);
+      setData(res.data.recipes)
+    };
+    getRandoms()
+  }, []);
+
+
   return (
     <>
       <div className="home-container">
         <div className="hero">
           <h1>Welcome to Your Recipe Website</h1>
           <p>Discover delicious recipes for every occasion.</p>
-          <a href="/recipes" className="cta-button">
+          <Link to="/recipes" className="cta-button">
             Explore Recipes
-          </a>
+          </Link>
         </div>
 
         <div className="featured-recipes">
-          {data.map((recipe) => {
-            return <RecipeCard recipe={recipe} />;
+          {data.length > 0 && data.map((recipe) => {
+            return <SpoonRecipeCard recipe={recipe} />
           })}
         </div>
       </div>

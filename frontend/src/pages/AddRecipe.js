@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/AddRecipe.css";
-import addRecipe from "../helpers/addRecipe";
+import addRecipe from "../api/addRecipe";
 import { useRecipeContext } from "../helpers/useRecipeContext";
 import { useAuthContext } from "../helpers/useAuthContext";
 

@@ -10,6 +10,7 @@ import RecipeDetails from "./pages/RecipeDetails";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import { useAuthContext } from "./helpers/useAuthContext";
+import CategoryRecipes from "./pages/CategoryRecipes";
 
 function App() {
   const { user } = useAuthContext();
@@ -51,6 +52,10 @@ function App() {
           <Route
             path="/signup"
             element={!user ? <Signup /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/categories/:categoryName"
+            element={user ? <CategoryRecipes /> : <Navigate to="/" />}
           />
         </Routes>
         <Footer />

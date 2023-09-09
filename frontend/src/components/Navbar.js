@@ -34,10 +34,10 @@ const Navbar = () => {
         </Link>
       </div>
 
-      <div className="search">
+      {/* <div className="search">
         <input type="search" className="search-input" placeholder="Search" />
         <button className="search-button">Search</button>
-      </div>
+      </div> */}
       <div className="auth-links">
         {user && (
           <button className="logout-button" onClick={handleLogout}>
